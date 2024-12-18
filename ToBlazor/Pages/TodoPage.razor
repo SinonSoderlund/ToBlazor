@@ -1,0 +1,51 @@
+﻿@page "/todopage"
+
+<PageTitle>Todo List</PageTitle>
+
+<h3>Todo List</h3>
+
+
+
+<main>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <p class="col-md">Welcome to ToDo, the list where you can add things to do.</p>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md">
+
+            <div class="card" style="width: auto;">
+                <div class="card-header">
+                    <EditForm Model="inData" Enhance onvalidsubmit="AddNewTodo" class="row" FormName="AddNewTask">
+                        <DataAnnotationsValidator></DataAnnotationsValidator>
+                        <div class="col-9">
+                            <label for="inputTask" class="form-lable">Please input task name:</label>
+                            <input type="text" class="form-control" id="inputTask" placeholder="Name" @bind="inData.Name">
+                            <ValidationMessage For="(() => inData.Name)"></ValidationMessage>
+                        </div>
+                        <div class="col-9">
+                            <label for="inputTask" class="form-lable">Please input task description:</label>
+                            <input type="text" class="form-control" id="inputTask" placeholder="Task Description" @bind="inData.Description">
+                            <ValidationMessage For="(() => inData.Description)"></ValidationMessage>
+                        </div>
+                        <div class="col-3 g-4">
+                            <button id="add" type="submit" class="btn btn-primary mb-3">Add</button>
+                        </div>
+                    </EditForm>
+                </div>
+                <ul class="list-group" id="taskGroup">
+                    @foreach (Todo todo in todoList)
+                    {
+                        <TodoEntry data="@todo"></TodoEntry>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</main>
+
+
+<footer>2024&copy; Sinon Söderlund.</footer>

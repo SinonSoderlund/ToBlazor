@@ -1,0 +1,14 @@
+﻿
+<li class="list-group-item @(gone ? "d-none" :"") ">
+    <div class="row">
+        <button type="button" class="btn col-10 @(active ? "active" : "btn-task") " @onclick="ToggleActive" data-bs-toggle="button" aria-pressed="true">
+            @data.Name
+            <div>
+                @data.Description
+            </div>
+        </button>
+        <button type="button" class="btn btn-outline-warning btn-remove col-1" id="btn-remove" @onclick="DeleteThis">
+            <i class="bi bi-x-square">X</i>
+        </button>
+    </div>
+</li>
